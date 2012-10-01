@@ -8,13 +8,13 @@ import json
 def processPayload(payload):
     logger = logging.getLogger("webgit.views.processPayload")
     try:
-      data = json.loads(request.POST['payload'])
-    except:
-      logger.info("payload probably malformed")
+      data = json.loads(payload)
+    except Exception, e:
+      logger.info("%s: payload probably malformed"%(e))
       return False
     pusher_name = data['pusher']['name']
     repo_name = data['repository']['name']
-    logger.info("%s pushed to repository %s"%(pusher_name, repository_name))
+    logger.info("%s pushed to repository %s"%(pusher_name, repo_name))
     return True
 
 
