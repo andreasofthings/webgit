@@ -31,6 +31,9 @@ def webhook(request):
         result = processPayload(request.POST['payload'])
         if result:
           return HttpResponse(status=200)
+        else:
+          logger.debug("processPayload returned False")
+          return HttpResponse(status=400)
       else:
         logger.debug("request didn't have a payload")
         return HttpResponse(status=400)
