@@ -2,6 +2,7 @@ import logging
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
+from django.views.generic import View
 import json
 
 
@@ -44,3 +45,6 @@ def webhook(request):
   else:
     return HttpResponse("GET", status=200)
 
+class Webhook(View):
+    def get(self, request):
+        return HttpResponse("GET", status=200)

@@ -1,0 +1,4 @@
+include LICENSE
+include README.rst
+recursive-include webgit/static *
+recursive-include webgit/templates *
